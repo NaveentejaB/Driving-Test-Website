@@ -1,0 +1,68 @@
+.update-main{
+    width: 700px;
+    height:auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 40px;
+    color: black;
+}
+.update-feilds-div{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+}
+.feilds-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inpt{
+    width: 45%;
+}
+.inpt_addres{
+    width: 80%;
+}
+.phts-div-par{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    align-items: center;
+}
+.pht-div{
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.preview-tab{
+    width: 100%;
+    height: 200px;
+    border: 1px dashed black;
+}
+.preview-tab img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.btn-grps{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.btn{
+    width: 90px;
+    background: #4931a8 !important;
+}
+.cancel-btn{
+    background: gray !important;
+}

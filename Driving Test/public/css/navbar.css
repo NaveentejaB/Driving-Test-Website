@@ -1,0 +1,19 @@
+.app-bar{
+    background: #fff;
+    box-shadow: none !important;
+    border-radius: 2px;
+    border-bottom: 1px solid rgb(209, 208, 208);
+}
+.logo-logo-name{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-par{
+    display: flex;
+    justify-content: space-between;
+}
+.hvr:hover{
+    cursor: pointer;
+}

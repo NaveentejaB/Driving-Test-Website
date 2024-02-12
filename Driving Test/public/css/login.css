@@ -1,0 +1,63 @@
+.main{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_box{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+.logo{
+    height: 30px;
+    padding: 0; 
+}
+.logo-txt{
+    font-size: 22px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #464647;
+    font-weight: 700;
+}
+.txt-feild{
+    width: 70%;
+}
+.car-icon{
+    padding: 0; 
+    margin: 0;
+    object-fit: contain;
+}
+.login-btn{
+    background-color: #4931a8;
+    width: 70%;
+    height: 50px;
+}
+.btm-txt-login{
+    width: 70%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.login-txt-one{
+    font-size: 14px;
+    color: #b2bbc2;
+}
+.register-nav{
+    font-size: 14x;
+    font-weight: 600;
+    color: #4931a8;
+
+}
+.register-nav:hover{
+    cursor: pointer;
+}
