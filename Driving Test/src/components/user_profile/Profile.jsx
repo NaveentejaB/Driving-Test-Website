@@ -9,11 +9,11 @@ const Profile = (props) => {
   const fetchUserDetails = async() =>{
     try{
       
-      const admin_token = localStorage.getItem('access_token')
+      const token = localStorage.getItem('access_token')
       const response = await fetch('http://localhost:3000/details',{
           method : 'GET',
           headers :{
-              'Authorization' : admin_token,
+              'Authorization' : token,
               'Content-Type': 'application/json',
           }
       })
@@ -24,10 +24,6 @@ const Profile = (props) => {
       }
       if(result.error){
           console.log('Error proccessing the request:',result.message)
-          if(response.status === 403){
-            localStorage.clear()
-            navigate('/login')
-          }
       }else{
           const obj = result.data
           setBio(obj)
@@ -37,15 +33,7 @@ const Profile = (props) => {
         console.log('Error proccessing the request:',err.message)
     }
   }
-  const handleDownload = () =>{
-    const link = document.createElement('a');
-    link.href =  bio.user_license;
-    link.download = 'image.png';
-    const btn = document.body.querySelector('#download-btn')
-    btn.appendChild(link);
-    link.click();
-    btn.removeChild(link);
-  }
+  
   useEffect(()=>{
     fetchUserDetails()
   },[])

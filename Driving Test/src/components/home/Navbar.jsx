@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -15,10 +15,43 @@ import '/public/css/navbar.css'
 
 const settings = ['Profile', 'Logout']
 
-const Navbar = () => {
+const Navbar = (props) => {
   const navigate = useNavigate()
+  const [image,setImage] = useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const fetchUserDetails = async() =>{
+    try{
+      
+      const token = localStorage.getItem('access_token')
+      const response = await fetch('http://localhost:3000/details',{
+          method : 'GET',
+          headers :{
+              'Authorization' : token,
+              'Content-Type': 'application/json',
+          }
+      })
+      const result = await response.json()
+      if(response.status === 403){
+        localStorage.clear()
+        navigate('/login')
+      }
+      if(result.error){
+          console.log('Error proccessing the request:',result.message)
+          if(response.status === 403){
+            localStorage.clear()
+            navigate('/login')
+          }
+      }else{
+          setImage(result.data.user_photo)
+      }
+    }catch(err){
+        console.log('Error proccessing the request:',err.message)
+    }
+  }
 
+  useEffect(()=>{
+    fetchUserDetails()
+  },[])
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
   }
@@ -36,6 +69,7 @@ const Navbar = () => {
     }
     
   }
+  console.log(props.profileUrl);
   return (
     <AppBar className='app-bar' position="static">
       <Container maxWidth="xl" className='app-bar'>
@@ -62,7 +96,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="" />
+                <Avatar alt="Remy Sharp" src={"data:image/png;base64,"+image} />
               </IconButton>
             </Tooltip>
             <Menu

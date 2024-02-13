@@ -31,19 +31,21 @@ const Profile_update = (props) => {
   const fetchUserDetails = async() =>{
     try{
       
-      const admin_token = localStorage.getItem('access_token')
+      const token = localStorage.getItem('access_token')
       const response = await fetch('http://localhost:3000/details',{
           method : 'GET',
           headers :{
-              'Authorization' : admin_token,
+              'Authorization' : token,
               'Content-Type': 'application/json',
           }
       })
       const result = await response.json()
+      if(response.status === 403){
+        localStorage.clear()
+        navigate('/login')
+      }
       if(result.error){
           console.log('Error proccessing the request:',result.message)
-          if(response.status === 403)
-            navigate('/login')
       }else{
           const obj = result.data
           setBio(obj)
@@ -52,6 +54,7 @@ const Profile_update = (props) => {
             address : obj.user_address,
             phone : obj.user_contact
           })
+          console.log(result.message);
       }
     }catch(err){
         console.log('Error proccessing the request:',err.message)

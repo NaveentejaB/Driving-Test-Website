@@ -6,14 +6,15 @@ import '/public/css/user_profile.css'
 
 const User_profile = () => {
   const[isUpdatePressed,setIsUpdatePressed] = useState(false)
-  
+
+
   const handleUpdateToggle = (value) =>{
     setIsUpdatePressed(value)
   }
   
   return (
     <div className='home-main'>
-      <Navbar/>
+      <Navbar />
       <div className="display-profile" style={{height: isUpdatePressed ? '90vh' : '130vh'}}>
         { isUpdatePressed ? <Profile_update  changeState={handleUpdateToggle} /> : <Profile  changeState={handleUpdateToggle}/>}
       </div>

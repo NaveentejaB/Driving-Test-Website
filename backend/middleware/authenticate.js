@@ -10,8 +10,6 @@ const authenticate = async (req, res, next) => {
 	try {
 		let isJwtValid = false
 		const tokenDetails = jwt.verify(token,process.env.ACCESS_TOKEN_PRIVATE_KEY,(err,data)=>{
-			console.log(err);
-			// console.log(data);
 			if(err)
 				{return;}
 			isJwtValid=true
@@ -25,7 +23,6 @@ const authenticate = async (req, res, next) => {
 		req.user = tokenDetails
 		next()
 	} catch (err) {
-		console.log(err)
 		res.status(403).json({ 
             error: true, 
             message: "Access token is expired" 

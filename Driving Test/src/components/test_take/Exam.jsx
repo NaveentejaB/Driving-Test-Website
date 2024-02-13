@@ -26,7 +26,7 @@ const Exam = () => {
     
     const updateInDatabase = async() =>{
       try{
-        const token = localStorage.getItem('access_token')
+        // calculate the score
         let score=[0,0,0]
         questions.map((question,index)=>{
           if(index<4){
@@ -49,8 +49,7 @@ const Exam = () => {
           status : tot > 10 ? true : false,
           feedBack : idx
         }
-        console.log('resquest sending');
-        console.log(data);
+        const token = localStorage.getItem('access_token')
         const response = await fetch('http://localhost:3000/update_result',{
             method : 'POST',
             headers :{
@@ -67,6 +66,7 @@ const Exam = () => {
         if(result.error){
           console.log('Error processing the request' , result.message);
         }else{
+          console.log(result.message);
           navigate('/result')
           
         }
